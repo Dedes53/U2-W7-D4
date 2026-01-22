@@ -74,7 +74,7 @@ loadBTN.addEventListener("click", function () {
                     <div class="card mb-4 shadow-sm">
                         <img src=${data.photos[i].src.medium} class="bd-placeholder-img card-img-top" />
                         <div class="card-body">
-                            <h5 class="card-title">Photo ${i}</h5>
+                            <a href="details.html?id=${data.photos[i].id}" ><h5 class="card-title">Photo ${i}</h5></a>
                             <p class="card-text">
                             This is a wider card with supporting text below as a natural
                             lead-in to additional content. This content is a little bit
@@ -122,7 +122,7 @@ secondaryBTN.addEventListener("click", function () {
                     <div class="card mb-4 shadow-sm">
                         <img src=${data.photos[i].src.medium} class="bd-placeholder-img card-img-top" />
                         <div class="card-body">
-                            <h5 class="card-title">Photo ${i}</h5>
+                            <a href="details.html?id=${data.photos[i].id}" ><h5 class="card-title">Photo ${i}</h5></a>
                             <p class="card-text">
                             This is a wider card with supporting text below as a natural
                             lead-in to additional content. This content is a little bit
