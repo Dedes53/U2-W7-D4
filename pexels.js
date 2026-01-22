@@ -19,12 +19,8 @@ loadBTN.addEventListener("click", function () {
         }
     })
         .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            else {
-                throw new Error('Errore recupero immagini da Pexels');
-            }
+            if (res.ok) { return res.json(); }
+            else { throw new Error('Errore recupero immagini da Pexels'); }
         })
         .then((data) => {
             console.log(data);
@@ -48,7 +44,7 @@ secondaryBTN.addEventListener("click", function () {
     })
         .then((res) => {
             if (res.ok) { return res.json(); }
-            else { throw new Error("Errore recupero immagini da Pexels") }
+            else { throw new Error("Errore recupero immagini da Pexels"); }
         })
         .then((data) => {
             for (let i = 0; i < imgs.length; i++) {
@@ -59,4 +55,22 @@ secondaryBTN.addEventListener("click", function () {
             console.log('Errore:', err);
             alert('Si è verificato un errore nel recupero delle immagini.');
         })
-}) 
+})
+
+// Seleziona tutti i pulsanti "Hide"
+const hideButtons = document.querySelectorAll('.hide');
+
+// funzione che nasconde la relativa carta quando si clocca sul pulsante hide 
+hideButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        // Trova la card più vicina (parent)
+        const card = this.closest('.card');
+
+        // Nascondi l'immagine e il paragrafo
+        const img = card.querySelector('img');
+        const paragraph = card.querySelector('.card-text');
+
+        img.style.display = 'none';
+        paragraph.style.display = 'none';
+    });
+});
