@@ -57,20 +57,30 @@ secondaryBTN.addEventListener("click", function () {
         })
 })
 
+
+
 // Seleziona tutti i pulsanti "Hide"
 const hideButtons = document.querySelectorAll('.hide');
 
 // funzione che nasconde la relativa carta quando si clocca sul pulsante hide 
 hideButtons.forEach(button => {
     button.addEventListener('click', function () {
-        // Trova la card più vicina (parent)
         const card = this.closest('.card');
-
-        // Nascondi l'immagine e il paragrafo
         const img = card.querySelector('img');
         const paragraph = card.querySelector('.card-text');
 
-        img.style.display = 'none';
-        paragraph.style.display = 'none';
+        if (img.style.display === 'none') {
+            img.style.display = 'block';
+            paragraph.style.display = 'block';
+            this.textContent = 'Hide';
+            this.classList.remove('text-success');
+            this.classList.add('text-danger'); // Rosso (già presente nell'HTML)
+        } else {
+            img.style.display = 'none';
+            paragraph.style.display = 'none';
+            this.textContent = 'Show';
+            this.classList.remove('text-danger');
+            this.classList.add('text-success'); // Verde
+        }
     });
 });
