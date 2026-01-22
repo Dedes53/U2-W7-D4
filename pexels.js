@@ -1,9 +1,10 @@
-// 7MnXIBqablYv6DtTQYdoj61wgpzbwmKcp2OOiWqdwLJWo8rFHFUEFl36
+// ci colleghiamo all'api tramite la nostra key 7MnXIBqablYv6DtTQYdoj61wgpzbwmKcp2OOiWqdwLJWo8rFHFUEFl36
+const pexelsURL = 'https://api.pexels.com/v1/search?query=kittens';
+const APIkey = "7MnXIBqablYv6DtTQYdoj61wgpzbwmKcp2OOiWqdwLJWo8rFHFUEFl36";
 
-const pexelsURL = 'https://www.pexels.com/api/';
 fetch(pexelsURL, {
     headers: {
-        'Authorization': '7MnXIBqablYv6DtTQYdoj61wgpzbwmKcp2OOiWqdwLJWo8rFHFUEFl36'
+        'Authorization': APIkey
     }
 })
     .then((res) => {
@@ -16,12 +17,9 @@ fetch(pexelsURL, {
     })
     .then((data) => {
         console.log(data);
-        data.photos.forEach(photo => {
-            // const img = document.createElement('img');
-            // img.src = photo.src.medium;
-            // document.body.appendChild(img);
-        });
     })
-    .catch((error) => {
-        console.error('Errore:', error);
+    .catch((err) => {
+        console.error('Errore:', err);
+        alert('Si è verificato un errore nel recupero delle immagini.');
     });
+
