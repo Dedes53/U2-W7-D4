@@ -1,30 +1,62 @@
 // ci colleghiamo all'api tramite la nostra key 7MnXIBqablYv6DtTQYdoj61wgpzbwmKcp2OOiWqdwLJWo8rFHFUEFl36
-const pexelsURL = 'https://api.pexels.com/v1/search?query=fish';
+const loadURL = 'https://api.pexels.com/v1/search?query=hamsters'; // immagini di hamsters
+const secondaryURL = 'https://api.pexels.com/v1/search?query=tigers'; // immagini di tigers
 const APIkey = "7MnXIBqablYv6DtTQYdoj61wgpzbwmKcp2OOiWqdwLJWo8rFHFUEFl36";
 
+
+// tag dei pulsanti
+const loadBTN = document.getElementById("load"); // deve far caricare immagini hamsters
+const secondaryBTN = document.getElementById("secondary"); // deve far caricare immagini tigers
+
+// riferimento alle immagini del DOM
 const imgs = document.getElementsByTagName('img');
 
-fetch(pexelsURL, {
-    headers: {
-        'Authorization': APIkey
-    }
-})
-    .then((res) => {
-        if (res.ok) {
-            return res.json();
-        }
-        else {
-            throw new Error('Errore recupero immagini da Pexels');
+// hamsters function
+loadBTN.addEventListener("click", function () {
+    fetch(loadURL, {
+        headers: {
+            'Authorization': APIkey
         }
     })
-    .then((data) => {
-        console.log(data);
-        for (let i = 0; i < imgs.length; i++) {
-            imgs[i].src = data.photos[i].src.medium;
-        }
-    })
-    .catch((err) => {
-        console.error('Errore:', err);
-        alert('Si è verificato un errore nel recupero delle immagini.');
-    });
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            else {
+                throw new Error('Errore recupero immagini da Pexels');
+            }
+        })
+        .then((data) => {
+            console.log(data);
+            for (let i = 0; i < imgs.length; i++) {
+                imgs[i].src = data.photos[i].src.medium;
+            }
+        })
+        .catch((err) => {
+            console.error('Errore:', err);
+            alert('Si è verificato un errore nel recupero delle immagini.');
+        });
 
+})
+
+// tigers function
+secondaryBTN.addEventListener("click", function () {
+    fetch(secondaryURL, {
+        headers: {
+            "Authorization": APIkey
+        }
+    })
+        .then((res) => {
+            if (res.ok) { return res.json(); }
+            else { throw new Error("Errore recupero immagini da Pexels") }
+        })
+        .then((data) => {
+            for (let i = 0; i < imgs.length; i++) {
+                imgs[i].src = data.photos[i].src.medium;
+            }
+        })
+        .catch((err) => {
+            console.log('Errore:', err);
+            alert('Si è verificato un errore nel recupero delle immagini.');
+        })
+}) 
