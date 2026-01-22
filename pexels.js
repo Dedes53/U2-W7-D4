@@ -57,8 +57,6 @@ secondaryBTN.addEventListener("click", function () {
         })
 })
 
-
-
 // Seleziona tutti i pulsanti "Hide"
 const hideButtons = document.querySelectorAll('.hide');
 
